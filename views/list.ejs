@@ -1,0 +1,36 @@
+<%- include("header"); -%>
+    
+
+
+    <div class="box" id="heading">
+        <h1> <%=listTitle%> </h1>
+    </div>
+    
+
+    <div class="box">
+        <form action="/delete" method="post">
+            <% for(var i=0;i<items.length;i++){ %>
+                <div class="item">
+                    <input type="checkbox">
+                    <p> <%= items[i].name %> </p>
+                    <button name="delete" class="delete" value=<%=items[i]._id.toString();%> type="submit">Delete</button>
+                </div>
+                <% } %> 
+        </form>
+          
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="addToList" value=<%=listTitle%>>+</button>
+        </form>
+    </div>
+    
+     <div class="otherLists">
+        <form action="/list" method="post">
+            <h3 class="pClass">Enter the date in format month/day/year that you want to search for the list</h3>
+            <input class="date" placeholder="DATE" name="date" type="text">
+            <button type="submit" class="search">Search</button>
+        </form>
+     </div>  
+
+    
+<%- include("footer"); -%>
